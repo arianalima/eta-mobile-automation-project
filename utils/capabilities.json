@@ -1,0 +1,8 @@
+{
+    "capabilities": {
+        "platformName": "Android",
+        "deviceName": "emulator-5554",
+        "app": "Hews.apk",
+        "newCommandTimeout": 10000
+    }
+}
