@@ -1,7 +1,6 @@
 import os
 import subprocess
 import sys
-import time
 
 from behave import step, then
 
@@ -23,7 +22,7 @@ def verify_login_fields_displayed(context):
     assert context.login_page.check_title_message()
     assert context.login_page.check_username_label()
     assert context.login_page.check_password_label()
-    assert context.login_page.check_warn_message()
+    assert WARN_MESSAGE, context.login_page.get_warn_message()
     assert context.login_page.check_cancel_button_label()
     assert context.login_page.check_login_button_label()
 
@@ -58,7 +57,9 @@ def select_button(context, button_label):
 
 @then('I should see a {error_message} error message')
 def verify_error_message(context, error_message):
-    assert get_messages_default(error_message) == context.login_page.get_warn_message(), get_messages_default(error_message) + "\n" + context.login_page.get_warn_message()
+    expected_message = get_messages_default(error_message)
+    actual_message = context.login_page.get_warn_message()
+    assert expected_message == actual_message
 
 
 @then('I should not see the login popup anymore')
@@ -68,7 +69,16 @@ def verify_the_login_popup(context):
 
 @then('I am logged out from the application')
 def verify_logout(context):
-    assert context.home_page.check_login_button()
+    expected_label = POPUP_TITLE
+    actual_label = context.home_page.get_logged_user()
+    assert expected_label, actual_label
+
+
+@then('I should see that valid user is logged')
+def verify_logged_user(context):
+    expected_user = VALID_USERNAME
+    actual_user = context.home_page.get_logged_user()
+    assert expected_user == actual_user
 
 
 @step('I have no network connection')

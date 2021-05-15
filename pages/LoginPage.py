@@ -11,6 +11,7 @@ CANCEL_BUTTON = (By.ID, "android:id/button2")
 LOGIN_BUTTON = (By.ID, "android:id/button1")
 WARN_MESSAGE = (By.ID, "com.leavjenn.hews:id/tv_prompt")
 POPUP_TITLE = (By.ID, "android:id/alertTitle")
+LOAD_BAR = (By.ID, "com.leavjenn.hews:id/progressbar_login")
 
 
 class LoginPage(BasePage):
@@ -40,6 +41,7 @@ class LoginPage(BasePage):
         return super().find_element(ec.visibility_of_element_located(LOGIN_BUTTON)).get_attribute("text") == constants.LOGIN_LABEL
 
     def get_warn_message(self):
+        super().find_element(ec.invisibility_of_element(LOAD_BAR))
         return super().find_element(ec.visibility_of_element_located(WARN_MESSAGE)).get_attribute("text")
 
     def check_title_message(self):

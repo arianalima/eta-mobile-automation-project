@@ -31,6 +31,7 @@ Feature: Login
     Given I insert a valid user
     And   I insert a valid password
     And   I select the login button
+    Then  I should see that valid user is logged
     When  I select the logout button
     Then  I am logged out from the application
 
