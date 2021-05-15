@@ -1,5 +1,4 @@
 from pages.BasePage import BasePage
-from utils import constants
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 
@@ -28,24 +27,24 @@ class LoginPage(BasePage):
     def insert_password(self, password):
         super().find_element(ec.visibility_of_element_located(PASSWORD_INPUT)).send_keys(password)
 
-    def check_username_label(self):
-        return super().find_element(ec.visibility_of_element_located(USERNAME_LABEL)).get_attribute("text") == constants.USERNAME_LABEL
+    def get_username_label(self):
+        return super().find_element(ec.visibility_of_element_located(USERNAME_LABEL)).get_attribute("text")
 
-    def check_password_label(self):
-        return super().find_element(ec.visibility_of_element_located(PASSWORD_LABEL)).get_attribute("text") == constants.PASSWORD_LABEL
+    def get_password_label(self):
+        return super().find_element(ec.visibility_of_element_located(PASSWORD_LABEL)).get_attribute("text")
 
-    def check_cancel_button_label(self):
-        return super().find_element(ec.visibility_of_element_located(CANCEL_BUTTON)).get_attribute("text") == constants.CANCEL_LABEL
+    def get_cancel_button_label(self):
+        return super().find_element(ec.visibility_of_element_located(CANCEL_BUTTON)).get_attribute("text")
 
-    def check_login_button_label(self):
-        return super().find_element(ec.visibility_of_element_located(LOGIN_BUTTON)).get_attribute("text") == constants.LOGIN_LABEL
+    def get_login_button_label(self):
+        return super().find_element(ec.visibility_of_element_located(LOGIN_BUTTON)).get_attribute("text")
 
     def get_warn_message(self):
         super().find_element(ec.invisibility_of_element(LOAD_BAR))
         return super().find_element(ec.visibility_of_element_located(WARN_MESSAGE)).get_attribute("text")
 
-    def check_title_message(self):
-        return super().find_element(ec.visibility_of_element_located(POPUP_TITLE)).get_attribute("text") == constants.POPUP_TITLE
+    def get_title_message(self):
+        return super().find_element(ec.visibility_of_element_located(POPUP_TITLE)).get_attribute("text")
 
-    def check_title_invisibility(self):
+    def get_title_invisibility(self):
         return super().find_element(ec.invisibility_of_element(POPUP_TITLE))

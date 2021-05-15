@@ -19,4 +19,8 @@ def before_scenario(context, scenario):
 
 
 def after_scenario(context, scenario):
+    if "network" in scenario.tags:
+        context.execute_steps('''
+        When I enable the network connection
+        ''')
     context.driver.quit()

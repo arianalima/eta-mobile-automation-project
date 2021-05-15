@@ -5,7 +5,6 @@ from pages.BasePage import BasePage
 
 DROPDOWN_MENU = (By.ID, "com.leavjenn.hews:id/iv_expander")
 LOGIN_BUTTON = (By.ID, "com.leavjenn.hews:id/design_menu_item_text")
-LOGOUT_BUTTON = (By.ID, "com.leavjenn.hews:id/design_menu_item_text")
 LOGGED_USER_LABEL = (By.ID, "com.leavjenn.hews:id/tv_account")
 MAGNIFIER_BUTTON = (By.ID, "com.leavjenn.hews:id/action_search")
 
@@ -19,11 +18,6 @@ class HomePage(BasePage):
         self.open_burger_menu()
         super().find_element(ec.visibility_of_element_located(DROPDOWN_MENU)).click()
         super().find_element(ec.visibility_of_element_located(LOGIN_BUTTON)).click()
-
-    def logout(self):
-        self.open_burger_menu()
-        super().find_element(ec.visibility_of_element_located(DROPDOWN_MENU)).click()
-        super().find_element(ec.visibility_of_element_located(LOGOUT_BUTTON)).click()
 
     def get_logged_user(self):
         self.open_burger_menu()
