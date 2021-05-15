@@ -1,6 +1,6 @@
-from utils.constants import Messages
+# from utils.constants import Messages
+from utils.Messages import Messages
 
 
 def get_messages_default(key):
-    messages = Messages()
-    return getattr(messages, key.upper())
+    return Messages[key].value

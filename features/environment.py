@@ -5,7 +5,7 @@ import time
 from appium import webdriver
 
 
-def before_all(context):
+def before_scenario(context, scenario):
     config_file_path = os.path.join(os.path.dirname(__file__), '..', 'utils', 'capabilities.json')
     with open(config_file_path) as config_file:
         CONFIG = json.load(config_file)
@@ -18,5 +18,5 @@ def before_all(context):
     time.sleep(9)
 
 
-def after_all(context):
+def after_scenario(context, scenario):
     context.driver.quit()
